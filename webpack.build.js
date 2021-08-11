@@ -53,6 +53,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "examples/index.html",
     }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "examples/audit.json",
+          to: "audit.json",
+        },
+      ],
+    }),
   ],
   devServer: {
     host: "localhost",

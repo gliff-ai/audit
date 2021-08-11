@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { svgSrc } from "@/helpers";
 import { theme } from "@gliff-ai/style";
+import { AuditAction } from "@gliff-ai/annotate";
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -35,7 +36,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface Props {
-  showAppBar?: boolean;
+  showAppBar: boolean;
+  audit?: AuditAction[];
 }
 
 const UserInterface = (props: Props): ReactElement => {
