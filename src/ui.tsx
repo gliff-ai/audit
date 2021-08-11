@@ -8,6 +8,12 @@ import {
   Card,
   Paper,
   Typography,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
 } from "@material-ui/core";
 import { svgSrc } from "@/helpers";
 import { theme } from "@gliff-ai/style";
@@ -32,6 +38,10 @@ const useStyles = makeStyles(() => ({
     display: "inline",
     fontSize: "21px",
     marginRight: "125px",
+  },
+  tableText: {
+    fontSize: "16px",
+    paddingLeft: "20px",
   },
 }));
 
@@ -81,6 +91,29 @@ const UserInterface = (props: Props): ReactElement => {
                 Audit Trail
               </Typography>
             </Paper>
+            <TableContainer>
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell className={classes.tableText}>
+                      Date &amp; Time
+                    </TableCell>
+                    <TableCell className={classes.tableText}>Action</TableCell>
+                    <TableCell className={classes.tableText}>Details</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {props.audit.map((action: AuditAction) => (
+                    <TableRow key={action.timestamp + action.method}>
+                      <TableCell>
+                        {new Date(action.timestamp).toString()}
+                      </TableCell>
+                      <TableCell>{action.method}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Card>
         </div>
       </div>
