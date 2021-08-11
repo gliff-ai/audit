@@ -5,6 +5,9 @@ import {
   Grid,
   makeStyles,
   ThemeProvider,
+  Card,
+  Paper,
+  Typography,
 } from "@material-ui/core";
 import { svgSrc } from "@/helpers";
 import { theme } from "@gliff-ai/style";
@@ -18,6 +21,16 @@ const useStyles = makeStyles(() => ({
   logo: {
     marginBottom: "5px",
     marginTop: "7px",
+  },
+  paperHeader: {
+    padding: "10px",
+    backgroundColor: theme.palette.primary.main,
+  },
+  headingTypography: {
+    color: "#000000",
+    display: "inline",
+    fontSize: "21px",
+    marginRight: "125px",
   },
 }));
 
@@ -50,7 +63,24 @@ const UserInterface = (props: Props): ReactElement => {
     <ThemeProvider theme={theme}>
       {appBar}
       <div style={{ marginTop: showAppBar ? "108px" : "20px" }}>
-        <h1>Hello, World!</h1>
+        <div style={{ display: "flex" }}>
+          <Card style={{ width: "20%" }}>Hello</Card>
+          <Card style={{ width: "100%" }}>
+            <Paper
+              elevation={0}
+              variant="outlined"
+              square
+              className={classes.paperHeader}
+            >
+              <Typography
+                className={classes.headingTypography}
+                style={{ marginLeft: "14px" }}
+              >
+                Audit Trail
+              </Typography>
+            </Paper>
+          </Card>
+        </div>
       </div>
     </ThemeProvider>
   );
