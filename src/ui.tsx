@@ -14,7 +14,11 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { svgSrc } from "@/helpers";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
@@ -109,6 +113,32 @@ const UserInterface = (props: Props): ReactElement => {
                         {new Date(action.timestamp).toLocaleString()}
                       </TableCell>
                       <TableCell>{action.method}</TableCell>
+                      <TableCell
+                        style={{
+                          width: "30%",
+                          paddingTop: "0px",
+                          paddingBottom: "0px",
+                        }}
+                      >
+                        <Accordion>
+                          <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                          >
+                            <Typography>
+                              {action.args.length > 32
+                                ? action.args.substr(0, 32) + "..."
+                                : action.args}
+                            </Typography>
+                          </AccordionSummary>
+                          <AccordionDetails>
+                            <Typography style={{ whiteSpace: "pre-wrap" }}>
+                              {JSON.stringify(JSON.parse(action.args), null, 2)}
+                            </Typography>
+                          </AccordionDetails>
+                        </Accordion>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
