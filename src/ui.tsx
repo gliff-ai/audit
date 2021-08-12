@@ -106,7 +106,7 @@ const UserInterface = (props: Props): ReactElement => {
                   {props.audit.map((action: AuditAction) => (
                     <TableRow key={action.timestamp + action.method}>
                       <TableCell>
-                        {new Date(action.timestamp).toString()}
+                        {new Date(action.timestamp).toLocaleString()}
                       </TableCell>
                       <TableCell>{action.method}</TableCell>
                     </TableRow>
