@@ -19,12 +19,11 @@ import {
   AccordionDetails,
   TextField,
 } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { theme } from "@gliff-ai/style";
+import { AuditAction } from "@gliff-ai/annotate";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { svgSrc } from "@/helpers";
 import SearchBar from "@/SearchAndSortBar";
-import { theme } from "@gliff-ai/style";
-import { AuditAction } from "@gliff-ai/annotate";
 
 const useStyles = makeStyles(() => ({
   input1: {
@@ -58,7 +57,7 @@ const useStyles = makeStyles(() => ({
 
 interface Props {
   showAppBar: boolean;
-  audit?: AuditAction[];
+  audit: AuditAction[];
 }
 
 const UserInterface = (props: Props): ReactElement => {
@@ -67,11 +66,6 @@ const UserInterface = (props: Props): ReactElement => {
 
   const [searchField, setSearchField] = useState<string>(""); // search field
   const [searchValue, setSearchValue] = useState<string>(""); // search value
-
-  useEffect(() => {
-    if (searchField === "Action") {
-    }
-  });
 
   const appBar = !showAppBar ? null : (
     <AppBar position="fixed" className={classes.appBar} elevation={0}>
@@ -148,7 +142,7 @@ const UserInterface = (props: Props): ReactElement => {
                         action.args.toLowerCase().includes(searchValue))
                   )
                   .map((action: AuditAction) => (
-                    <TableRow key={action.timestamp + action.method}>
+                    <TableRow key={`${action.timestamp} + ${action.method}`}>
                       <TableCell>
                         {new Date(action.timestamp).toLocaleString()}
                       </TableCell>
@@ -168,7 +162,7 @@ const UserInterface = (props: Props): ReactElement => {
                           >
                             <Typography>
                               {action.args.length > 32
-                                ? action.args.substr(0, 32) + "..."
+                                ? action.args.substr(0, 32).concat("...")
                                 : action.args}
                             </Typography>
                           </AccordionSummary>

@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Paper, TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { theme } from "@gliff-ai/style";
-import TooltipButton from "@/TooltipButton";
 
 const useStyles = makeStyles({
   cardContent: {
@@ -91,16 +90,6 @@ export default function SearchBar({
             value={value}
             style={{ marginTop: "8px" }}
             placeholder="Value"
-          />
-          <TooltipButton
-            type="submit"
-            tooltip="Search"
-            svgSrc="search"
-            onClick={(e: any) => {
-              if (!field) {
-                e?.preventDefault();
-              }
-            }}
           />
         </div>
       </CardContent>
