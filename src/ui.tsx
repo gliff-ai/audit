@@ -17,13 +17,20 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  TextField,
 } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { svgSrc } from "@/helpers";
+import SearchBar from "@/SearchAndSortBar";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
 
 const useStyles = makeStyles(() => ({
+  input1: {
+    paddingLeft: "10px",
+    width: "90%",
+  },
   appBar: {
     backgroundColor: theme.palette.secondary.light,
     height: "90px",
@@ -80,7 +87,16 @@ const UserInterface = (props: Props): ReactElement => {
       {appBar}
       <div style={{ marginTop: showAppBar ? "108px" : "20px" }}>
         <div style={{ display: "flex" }}>
-          <Card style={{ width: "20%" }}>Hello</Card>
+          <Card
+            style={{
+              width: "20%",
+              marginLeft: "8px",
+              marginRight: "16px",
+              height: "100%", // necessary to prevent the Card being 100% tall
+            }}
+          >
+            <SearchBar fieldOptions={["Action", "Details"]} />
+          </Card>
           <Card style={{ width: "100%" }}>
             <Paper
               elevation={0}
