@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -65,6 +65,14 @@ const UserInterface = (props: Props): ReactElement => {
   const { showAppBar } = props;
   const classes = useStyles();
 
+  const [searchField, setSearchField] = useState<string>(""); // search field
+  const [searchValue, setSearchValue] = useState<string>(""); // search value
+
+  useEffect(() => {
+    if (searchField === "Action") {
+    }
+  });
+
   const appBar = !showAppBar ? null : (
     <AppBar position="fixed" className={classes.appBar} elevation={0}>
       <Toolbar>
@@ -86,44 +94,60 @@ const UserInterface = (props: Props): ReactElement => {
     <ThemeProvider theme={theme}>
       {appBar}
       <div style={{ marginTop: showAppBar ? "108px" : "20px" }}>
-        <div style={{ display: "flex" }}>
-          <Card
-            style={{
-              width: "20%",
-              marginLeft: "8px",
-              marginRight: "16px",
-              height: "100%", // necessary to prevent the Card being 100% tall
-            }}
+        <Card
+          style={{
+            width: "18.5%",
+            marginLeft: "8px",
+            marginRight: "16px",
+            position: "fixed",
+          }}
+        >
+          <SearchBar
+            fieldOptions={["Action", "Details"]}
+            field={searchField}
+            value={searchValue}
+            setField={setSearchField}
+            setValue={setSearchValue}
+          />
+        </Card>
+        <Card style={{ width: "80%", float: "right" }}>
+          <Paper
+            elevation={0}
+            variant="outlined"
+            square
+            className={classes.paperHeader}
           >
-            <SearchBar fieldOptions={["Action", "Details"]} />
-          </Card>
-          <Card style={{ width: "100%" }}>
-            <Paper
-              elevation={0}
-              variant="outlined"
-              square
-              className={classes.paperHeader}
+            <Typography
+              className={classes.headingTypography}
+              style={{ marginLeft: "14px" }}
             >
-              <Typography
-                className={classes.headingTypography}
-                style={{ marginLeft: "14px" }}
-              >
-                Audit Trail
-              </Typography>
-            </Paper>
-            <TableContainer>
-              <Table aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell className={classes.tableText}>
-                      Date &amp; Time
-                    </TableCell>
-                    <TableCell className={classes.tableText}>Action</TableCell>
-                    <TableCell className={classes.tableText}>Details</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {props.audit.map((action: AuditAction) => (
+              Audit Trail
+            </Typography>
+          </Paper>
+          <TableContainer>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell className={classes.tableText}>
+                    Date &amp; Time
+                  </TableCell>
+                  <TableCell className={classes.tableText}>Action</TableCell>
+                  <TableCell className={classes.tableText}>Details</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {props.audit
+                  .filter(
+                    (action: AuditAction) =>
+                      !["Action", "Details"].includes(searchField) ||
+                      (searchField === "Action" &&
+                        action.method
+                          .toLowerCase()
+                          .includes(searchValue.toLowerCase())) ||
+                      (searchField === "Details" &&
+                        action.args.toLowerCase().includes(searchValue))
+                  )
+                  .map((action: AuditAction) => (
                     <TableRow key={action.timestamp + action.method}>
                       <TableCell>
                         {new Date(action.timestamp).toLocaleString()}
@@ -157,11 +181,10 @@ const UserInterface = (props: Props): ReactElement => {
                       </TableCell>
                     </TableRow>
                   ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Card>
-        </div>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Card>
       </div>
     </ThemeProvider>
   );

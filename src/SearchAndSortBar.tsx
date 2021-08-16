@@ -28,6 +28,10 @@ const useStyles = makeStyles({
 
 interface Props {
   fieldOptions: string[];
+  field: string;
+  value: string;
+  setField: (newValue: string) => void;
+  setValue: (newValue: string) => void;
 }
 
 export type MetadataLabel = {
@@ -44,10 +48,14 @@ const CustomPaper = (props: unknown) => (
   />
 );
 
-export default function SearchBar({ fieldOptions }: Props): ReactElement {
+export default function SearchBar({
+  fieldOptions,
+  field,
+  value,
+  setField,
+  setValue,
+}: Props): ReactElement {
   const classes = useStyles();
-  const [field, setField] = useState<string>(""); // search field
-  const [value, setValue] = useState<string>(""); // search value
 
   return (
     <Card
@@ -60,7 +68,9 @@ export default function SearchBar({ fieldOptions }: Props): ReactElement {
         <Autocomplete
           id="combobox-metadata-key"
           style={{ marginTop: "16px" }}
-          onInputChange={(e: ChangeEvent, newInputKey: string) => {}}
+          onInputChange={(e: ChangeEvent, newInputKey: string) => {
+            setField(newInputKey);
+          }}
           options={fieldOptions}
           renderInput={(params: unknown) => (
             <TextField
