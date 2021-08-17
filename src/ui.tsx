@@ -22,8 +22,8 @@ import {
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { svgSrc } from "@/helpers";
-import SearchBar from "@/SearchAndSortBar";
+import { svgSrc } from "@/components/helpers";
+import { SearchBar } from "@/components/SearchBar";
 
 const useStyles = makeStyles(() => ({
   input1: {
