@@ -4,7 +4,6 @@
   "description": "gliff.ai AUDIT",
   "repository": "git://github.com/gliff-ai/audit.git",
   "main": "dist/main.js",
-  "module": "dist/src/index.tsx",
   "typings": "dist/src/index.d.ts",
   "files": [
     "dist/*"

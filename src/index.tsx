@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -17,7 +17,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  TextField,
 } from "@material-ui/core";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
