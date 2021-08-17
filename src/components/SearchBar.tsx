@@ -47,7 +47,7 @@ const CustomPaper = (props: unknown) => (
   />
 );
 
-export default function SearchBar({
+export function SearchBar({
   fieldOptions,
   field,
   value,
