@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import { ChangeEvent, useState, useEffect, ReactElement } from "react";
-
+import { ChangeEvent, ReactElement } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Paper, TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -40,11 +38,13 @@ export type MetadataLabel = {
 
 // To be able to style the dropdown list
 const CustomPaper = (props: unknown) => (
+  /* eslint-disable react/jsx-props-no-spreading */
   <Paper
     elevation={8}
     {...props}
     style={{ backgroundColor: theme.palette.primary.light }}
   />
+  /* eslint-enable react/jsx-props-no-spreading */
 );
 
 export function SearchBar({
@@ -72,12 +72,14 @@ export function SearchBar({
           }}
           options={fieldOptions}
           renderInput={(params: unknown) => (
+            /* eslint-disable react/jsx-props-no-spreading */
             <TextField
               {...params}
               label="Search Category"
               type="search"
               variant="outlined"
             />
+            /* eslint-enable react/jsx-props-no-spreading */
           )}
           PaperComponent={CustomPaper}
           placeholder="Search Category"
