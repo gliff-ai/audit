@@ -17,19 +17,6 @@ import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
 
 const useStyles = makeStyles(() => ({
-  input1: {
-    paddingLeft: "10px",
-    width: "90%",
-  },
-  appBar: {
-    backgroundColor: theme.palette.secondary.light,
-    height: "90px",
-    paddingTop: "9px",
-  },
-  logo: {
-    marginBottom: "5px",
-    marginTop: "7px",
-  },
   paperHeader: {
     padding: "10px",
     backgroundColor: theme.palette.primary.main,
