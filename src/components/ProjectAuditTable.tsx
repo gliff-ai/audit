@@ -38,6 +38,7 @@ interface Props {
   sessions: AnnotationSession[];
   searchField: string;
   searchValue: string;
+  setAudit: (audit: AuditAction[]) => void;
 }
 
 export const ProjectAuditTable = (props: Props): ReactElement => {
@@ -64,7 +65,12 @@ export const ProjectAuditTable = (props: Props): ReactElement => {
                   session.imagename.toLowerCase().includes(props.searchValue))
             )
             .map((session: AnnotationSession) => (
-              <TableRow key={`${session.timestamp}`}>
+              <TableRow
+                key={`${session.timestamp}`}
+                onClick={() => {
+                  props.setAudit(session.audit);
+                }}
+              >
                 <TableCell>
                   {new Date(session.timestamp).toLocaleString()}
                 </TableCell>

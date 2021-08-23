@@ -57,7 +57,7 @@ export interface AnnotationSession {
 
 interface Props {
   showAppBar: boolean;
-  audit: AnnotationSession[];
+  sessions: AnnotationSession[];
 }
 
 const UserInterface = (props: Props): ReactElement => {
@@ -66,6 +66,7 @@ const UserInterface = (props: Props): ReactElement => {
 
   const [searchField, setSearchField] = useState<string>(""); // search field
   const [searchValue, setSearchValue] = useState<string>(""); // search value
+  const [audit, setAudit] = useState<AuditAction[]>(null); // currently selected ANNOTATE-level audit
 
   const appBar = !showAppBar ? null : (
     <AppBar position="fixed" className={classes.appBar} elevation={0}>
@@ -118,16 +119,20 @@ const UserInterface = (props: Props): ReactElement => {
               Audit Trail
             </Typography>
           </Paper>
-          {/* <AnnotationAuditTable
-            audit={props.audit[0].audit}
-            searchField={searchField}
-            searchValue={searchValue}
-          /> */}
-          <ProjectAuditTable
-            sessions={props.audit}
-            searchField={searchField}
-            searchValue={searchValue}
-          />
+          {audit ? (
+            <AnnotationAuditTable
+              audit={audit}
+              searchField={searchField}
+              searchValue={searchValue}
+            />
+          ) : (
+            <ProjectAuditTable
+              sessions={props.sessions}
+              searchField={searchField}
+              searchValue={searchValue}
+              setAudit={setAudit}
+            />
+          )}
         </Card>
       </div>
     </ThemeProvider>

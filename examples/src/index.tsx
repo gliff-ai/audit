@@ -11,7 +11,7 @@ fetch("audit.json")
     ReactDOM.render(
       <UserInterface
         showAppBar
-        audit={[
+        sessions={[
           {
             timestamp: Date.now(),
             username: "phil",
