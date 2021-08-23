@@ -6,16 +6,11 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
   makeStyles,
 } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { AnnotationSession } from "@/ui";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
+import { AnnotationSession } from "@/ui";
 
 const useStyles = makeStyles(() => ({
   paperHeader: {

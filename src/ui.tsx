@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -8,16 +8,15 @@ import {
   Card,
   Paper,
   Typography,
-  TextField,
   IconButton,
 } from "@material-ui/core";
+import ArrowBack from "@material-ui/icons/ArrowBack";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
 import { svgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
 import { ProjectAuditTable } from "@/components/ProjectAuditTable";
-import ArrowBack from "@material-ui/icons/ArrowBack";
 
 const useStyles = makeStyles(() => ({
   input1: {
