@@ -51,6 +51,7 @@ export const ProjectAuditTable = (props: Props): ReactElement => {
           <TableRow>
             <TableCell className={classes.tableText}>Date &amp; Time</TableCell>
             <TableCell className={classes.tableText}>User</TableCell>
+            <TableCell className={classes.tableText}>Action</TableCell>
             <TableCell className={classes.tableText}>Image</TableCell>
           </TableRow>
         </TableHead>
@@ -70,11 +71,13 @@ export const ProjectAuditTable = (props: Props): ReactElement => {
                 onClick={() => {
                   props.setAudit(session.audit);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 <TableCell>
                   {new Date(session.timestamp).toLocaleString()}
                 </TableCell>
                 <TableCell>{session.username}</TableCell>
+                <TableCell>Annotate</TableCell>
                 <TableCell>{session.imagename}</TableCell>
               </TableRow>
             ))}

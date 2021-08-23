@@ -9,14 +9,15 @@ import {
   Paper,
   Typography,
   TextField,
+  IconButton,
 } from "@material-ui/core";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { svgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
 import { ProjectAuditTable } from "@/components/ProjectAuditTable";
+import ArrowBack from "@material-ui/icons/ArrowBack";
 
 const useStyles = makeStyles(() => ({
   input1: {
@@ -112,6 +113,20 @@ const UserInterface = (props: Props): ReactElement => {
             square
             className={classes.paperHeader}
           >
+            {audit && (
+              <IconButton
+                onClick={() => {
+                  setAudit(null);
+                }}
+                style={{
+                  padding: "0px",
+                  marginLeft: "8px",
+                  marginBottom: "4px",
+                }}
+              >
+                <ArrowBack />
+              </IconButton>
+            )}
             <Typography
               className={classes.headingTypography}
               style={{ marginLeft: "14px" }}
