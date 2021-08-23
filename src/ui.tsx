@@ -16,6 +16,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { svgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
+import { ProjectAuditTable } from "@/components/ProjectAuditTable";
 
 const useStyles = makeStyles(() => ({
   input1: {
@@ -47,7 +48,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-interface AnnotationSession {
+export interface AnnotationSession {
+  timestamp: number;
   username: string;
   imagename: string;
   audit: AuditAction[];
@@ -55,7 +57,7 @@ interface AnnotationSession {
 
 interface Props {
   showAppBar: boolean;
-  audit: AuditAction[];
+  audit: AnnotationSession[];
 }
 
 const UserInterface = (props: Props): ReactElement => {
@@ -116,8 +118,13 @@ const UserInterface = (props: Props): ReactElement => {
               Audit Trail
             </Typography>
           </Paper>
-          <AnnotationAuditTable
-            audit={props.audit}
+          {/* <AnnotationAuditTable
+            audit={props.audit[0].audit}
+            searchField={searchField}
+            searchValue={searchValue}
+          /> */}
+          <ProjectAuditTable
+            sessions={props.audit}
             searchField={searchField}
             searchValue={searchValue}
           />

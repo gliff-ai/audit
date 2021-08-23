@@ -9,7 +9,17 @@ fetch("audit.json")
   .then((audit: AuditAction[]) => {
     // render main component:
     ReactDOM.render(
-      <UserInterface showAppBar audit={audit} />,
+      <UserInterface
+        showAppBar
+        audit={[
+          {
+            timestamp: Date.now(),
+            username: "phil",
+            imagename: "Rotating_earth_(large).gif",
+            audit: audit,
+          },
+        ]}
+      />,
       document.getElementById("react-container")
     );
   });
