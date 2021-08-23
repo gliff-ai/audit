@@ -40,11 +40,13 @@ export type MetadataLabel = {
 
 // To be able to style the dropdown list
 const CustomPaper = (props: unknown) => (
+  /* eslint-disable react/jsx-props-no-spreading */
   <Paper
     elevation={8}
     {...props}
     style={{ backgroundColor: theme.palette.primary.light }}
   />
+  /* eslint-enable react/jsx-props-no-spreading */
 );
 
 export function SearchBar({
@@ -72,12 +74,14 @@ export function SearchBar({
           }}
           options={fieldOptions}
           renderInput={(params: unknown) => (
+            /* eslint-disable react/jsx-props-no-spreading */
             <TextField
               {...params}
               label="Search Category"
               type="search"
               variant="outlined"
             />
+            /* eslint-enable react/jsx-props-no-spreading */
           )}
           PaperComponent={CustomPaper}
           placeholder="Search Category"

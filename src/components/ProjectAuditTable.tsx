@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
-import { AnnotationSession } from "@/ui";
+import { AnnotationSession } from "@/index";
 
 const useStyles = makeStyles(() => ({
   paperHeader: {

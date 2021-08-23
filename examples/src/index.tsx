@@ -1,6 +1,6 @@
 import * as ReactDOM from "react-dom";
 
-import UserInterface from "@/ui";
+import UserInterface from "@/index";
 
 import { AuditAction } from "@gliff-ai/annotate";
 
