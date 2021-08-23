@@ -55,6 +55,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+interface AnnotationSession {
+  username: string;
+  imagename: string;
+  audit: AuditAction[];
+}
+
 interface Props {
   showAppBar: boolean;
   audit: AuditAction[];
