@@ -61,7 +61,7 @@ jobs:
       - name: Setup dependencies
         run: npm i --omit=peer
       - name: Prepare
-        run: npm run prepublishOnly
+        run: npm run build
       - name: Publish
         uses: mikeal/merge-release@master
         env:
