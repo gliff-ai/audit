@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { ChangeEvent, ReactElement } from "react";
+import { theme } from "@gliff-ai/style";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, Paper, TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { theme } from "@gliff-ai/style";
 
 const useStyles = makeStyles({
   cardContent: {

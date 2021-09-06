@@ -1,10 +1,9 @@
-import * as ReactDOM from "react-dom";
-
-import UserInterface from "@/index";
-
+import ReactDOM from "react-dom";
 import { AuditAction } from "@gliff-ai/annotate";
 
-fetch("audit.json")
+import UserInterface from "../src//index";
+
+fetch("./audit.json")
   .then((response) => response.json())
   .then((audit: AuditAction[]) => {
     // render main component:
