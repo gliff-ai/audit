@@ -1,4 +1,6 @@
 import { ReactElement, useState } from "react";
+import { AuditAction } from "@gliff-ai/annotate";
+import { theme } from "@gliff-ai/style";
 import {
   AppBar,
   Toolbar,
@@ -11,9 +13,8 @@ import {
   IconButton,
 } from "@material-ui/core";
 import ArrowBack from "@material-ui/icons/ArrowBack";
-import { theme } from "@gliff-ai/style";
-import { AuditAction } from "@gliff-ai/annotate";
-import { svgSrc } from "@/components/helpers";
+
+import { imgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
 import { ProjectAuditTable } from "@/components/ProjectAuditTable";
@@ -74,7 +75,7 @@ const UserInterface = (props: Props): ReactElement => {
         <Grid container direction="row">
           <Grid item className={classes.logo}>
             <img
-              src={svgSrc("gliff-master-black")}
+              src={imgSrc("gliff-master-black")}
               width="79px"
               height="60px"
               alt="gliff logo"

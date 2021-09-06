@@ -1,4 +1,7 @@
 import { ReactElement } from "react";
+import { theme } from "@gliff-ai/style";
+import { AuditAction } from "@gliff-ai/annotate";
+
 import {
   TableContainer,
   Table,
@@ -13,8 +16,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { theme } from "@gliff-ai/style";
-import { AuditAction } from "@gliff-ai/annotate";
+
 
 const useStyles = makeStyles(() => ({
   paperHeader: {
