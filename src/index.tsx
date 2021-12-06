@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import { AuditAction } from "@gliff-ai/annotate";
+import type { AuditAction } from "@gliff-ai/annotate";
 import { theme } from "@gliff-ai/style";
 import {
   AppBar,
@@ -12,7 +12,7 @@ import {
   Typography,
   IconButton,
 } from "@material-ui/core";
-import ArrowBack from "@material-ui/icons/ArrowBack";
+import { ArrowBack } from "@material-ui/icons";
 
 import { imgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
