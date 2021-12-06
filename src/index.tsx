@@ -12,7 +12,7 @@ import {
   Typography,
   IconButton,
 } from "@material-ui/core";
-import {ArrowBack} from "@material-ui/icons";
+import { ArrowBack } from "@material-ui/icons";
 
 import { imgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";

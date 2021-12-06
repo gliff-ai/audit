@@ -15,7 +15,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import {ExpandMore} from "@material-ui/icons";
+import { ExpandMore } from "@material-ui/icons";
 
 const useStyles = makeStyles(() => ({
   paperHeader: {
