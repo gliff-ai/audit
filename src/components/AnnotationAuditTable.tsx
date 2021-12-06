@@ -15,7 +15,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {ExpandMore} from "@material-ui/icons";
 
 const useStyles = makeStyles(() => ({
   paperHeader: {
@@ -79,7 +79,7 @@ export const AnnotationAuditTable = (props: Props): ReactElement => {
                 >
                   <Accordion>
                     <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
+                      expandIcon={<ExpandMore />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
