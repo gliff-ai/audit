@@ -20,7 +20,7 @@ _Coming soon._
 
 Looking for something specific? 🔍
 
-- [Repository Introduction](#gliffai-annotate)
+- [Repository Introduction](#gliffai-audit)
 - [Demo-Preview](#demo-preview)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
