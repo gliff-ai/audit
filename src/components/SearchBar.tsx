@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     borderRadius: "9px",
     marginLeft: "15px",
     marginRight: "15px",
-    height: "110px",
+    height: "120px",
     padding: "inherit",
   },
   input2: {
@@ -74,12 +74,7 @@ export function SearchBar({
           options={fieldOptions}
           renderInput={(params: unknown) => (
             /* eslint-disable react/jsx-props-no-spreading */
-            <TextField
-              {...params}
-              label="Search Category"
-              type="search"
-              variant="outlined"
-            />
+            <TextField {...params} label="Search Category" variant="outlined" />
             /* eslint-enable react/jsx-props-no-spreading */
           )}
           PaperComponent={CustomPaper}
