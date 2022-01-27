@@ -1,13 +1,6 @@
 import { ReactElement } from "react";
-import {
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  makeStyles,
-} from "@material-ui/core";
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
 

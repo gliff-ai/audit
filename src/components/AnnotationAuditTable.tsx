@@ -13,9 +13,9 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  makeStyles,
-} from "@material-ui/core";
-import { ExpandMore } from "@material-ui/icons";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import { ExpandMore } from "@mui/icons-material";
 
 const useStyles = makeStyles(() => ({
   paperHeader: {

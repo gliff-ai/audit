@@ -2,9 +2,9 @@
 import { ChangeEvent, ReactElement } from "react";
 import { theme } from "@gliff-ai/style";
 
-import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, Paper, TextField } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import makeStyles from '@mui/styles/makeStyles';
+import { Card, CardContent, Paper, TextField } from "@mui/material";
+import Autocomplete from '@mui/material/Autocomplete';
 
 const useStyles = makeStyles({
   cardContent: {

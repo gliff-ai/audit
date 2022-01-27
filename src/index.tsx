@@ -5,19 +5,28 @@ import {
   AppBar,
   Toolbar,
   Grid,
-  makeStyles,
   ThemeProvider,
+  Theme,
+  StyledEngineProvider,
   Card,
   Paper,
   Typography,
   IconButton,
-} from "@material-ui/core";
-import { ArrowBack } from "@material-ui/icons";
+} from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
+import { ArrowBack } from "@mui/icons-material";
 
 import { imgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
 import { ProjectAuditTable } from "@/components/ProjectAuditTable";
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 const useStyles = makeStyles(() => ({
   input1: {
@@ -87,70 +96,72 @@ const UserInterface = (props: Props): ReactElement => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      {appBar}
-      <div style={{ marginTop: showAppBar ? "108px" : "20px" }}>
-        <Card
-          style={{
-            width: "18.5%",
-            marginLeft: "8px",
-            marginRight: "16px",
-            position: "fixed",
-          }}
-        >
-          <SearchBar
-            fieldOptions={["Action", "Details"]}
-            field={searchField}
-            value={searchValue}
-            setField={setSearchField}
-            setValue={setSearchValue}
-          />
-        </Card>
-        <Card style={{ width: "80%", float: "right" }}>
-          <Paper
-            elevation={0}
-            variant="outlined"
-            square
-            className={classes.paperHeader}
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        {appBar}
+        <div style={{ marginTop: showAppBar ? "108px" : "20px" }}>
+          <Card
+            style={{
+              width: "18.5%",
+              marginLeft: "8px",
+              marginRight: "16px",
+              position: "fixed",
+            }}
           >
-            {audit && (
-              <IconButton
-                onClick={() => {
-                  setAudit(null);
-                }}
-                style={{
-                  padding: "0px",
-                  marginLeft: "8px",
-                  marginBottom: "4px",
-                }}
-              >
-                <ArrowBack />
-              </IconButton>
-            )}
-            <Typography
-              className={classes.headingTypography}
-              style={{ marginLeft: "14px" }}
+            <SearchBar
+              fieldOptions={["Action", "Details"]}
+              field={searchField}
+              value={searchValue}
+              setField={setSearchField}
+              setValue={setSearchValue}
+            />
+          </Card>
+          <Card style={{ width: "80%", float: "right" }}>
+            <Paper
+              elevation={0}
+              variant="outlined"
+              square
+              className={classes.paperHeader}
             >
-              Audit Trail
-            </Typography>
-          </Paper>
-          {audit ? (
-            <AnnotationAuditTable
-              audit={audit}
-              searchField={searchField}
-              searchValue={searchValue}
-            />
-          ) : (
-            <ProjectAuditTable
-              sessions={props.sessions}
-              searchField={searchField}
-              searchValue={searchValue}
-              setAudit={setAudit}
-            />
-          )}
-        </Card>
-      </div>
-    </ThemeProvider>
+              {audit && (
+                <IconButton
+                  onClick={() => {
+                    setAudit(null);
+                  }}
+                  style={{
+                    padding: "0px",
+                    marginLeft: "8px",
+                    marginBottom: "4px",
+                  }}
+                  size="large">
+                  <ArrowBack />
+                </IconButton>
+              )}
+              <Typography
+                className={classes.headingTypography}
+                style={{ marginLeft: "14px" }}
+              >
+                Audit Trail
+              </Typography>
+            </Paper>
+            {audit ? (
+              <AnnotationAuditTable
+                audit={audit}
+                searchField={searchField}
+                searchValue={searchValue}
+              />
+            ) : (
+              <ProjectAuditTable
+                sessions={props.sessions}
+                searchField={searchField}
+                searchValue={searchValue}
+                setAudit={setAudit}
+              />
+            )}
+          </Card>
+        </div>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 
