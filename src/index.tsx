@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import type { AuditAction } from "@gliff-ai/annotate";
-import { theme } from "@gliff-ai/style";
+import { theme, generateClassName } from "@gliff-ai/style";
 import {
   AppBar,
   Toolbar,
@@ -12,21 +12,21 @@ import {
   Paper,
   Typography,
   IconButton,
+  CssBaseline,
+  Container,
 } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
+import { StylesProvider } from "@mui/styles";
 import { ArrowBack } from "@mui/icons-material";
-
 import { imgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
 import { ProjectAuditTable } from "@/components/ProjectAuditTable";
 
-
-declare module '@mui/styles/defaultTheme' {
+declare module "@mui/styles/defaultTheme" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
-
 
 const useStyles = makeStyles(() => ({
   input1: {
@@ -41,6 +41,16 @@ const useStyles = makeStyles(() => ({
   logo: {
     marginBottom: "5px",
     marginTop: "7px",
+  },
+  sideBar: {
+    width: "290px",
+  },
+  auditContainer: {
+    display: "flex",
+    width: "calc(100% - 310px)",
+    justifyContent: "flex-start",
+    marginBottom: "auto",
+    marginLeft: "20px",
   },
   paperHeader: {
     padding: "10px",
@@ -96,72 +106,80 @@ const UserInterface = (props: Props): ReactElement => {
   );
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        {appBar}
-        <div style={{ marginTop: showAppBar ? "108px" : "20px" }}>
-          <Card
-            style={{
-              width: "18.5%",
-              marginLeft: "8px",
-              marginRight: "16px",
-              position: "fixed",
-            }}
-          >
-            <SearchBar
-              fieldOptions={["Action", "Details"]}
-              field={searchField}
-              value={searchValue}
-              setField={setSearchField}
-              setValue={setSearchValue}
-            />
-          </Card>
-          <Card style={{ width: "80%", float: "right" }}>
-            <Paper
-              elevation={0}
-              variant="outlined"
-              square
-              className={classes.paperHeader}
+    <StylesProvider generateClassName={generateClassName("audit")}>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Container maxWidth={false}>
+            {appBar}
+            <Grid
+              container
+              spacing={2}
+              style={{ marginTop: showAppBar ? "108px" : "20px" }}
             >
-              {audit && (
-                <IconButton
-                  onClick={() => {
-                    setAudit(null);
-                  }}
-                  style={{
-                    padding: "0px",
-                    marginLeft: "8px",
-                    marginBottom: "4px",
-                  }}
-                  size="large">
-                  <ArrowBack />
-                </IconButton>
-              )}
-              <Typography
-                className={classes.headingTypography}
-                style={{ marginLeft: "14px" }}
-              >
-                Audit Trail
-              </Typography>
-            </Paper>
-            {audit ? (
-              <AnnotationAuditTable
-                audit={audit}
-                searchField={searchField}
-                searchValue={searchValue}
-              />
-            ) : (
-              <ProjectAuditTable
-                sessions={props.sessions}
-                searchField={searchField}
-                searchValue={searchValue}
-                setAudit={setAudit}
-              />
-            )}
-          </Card>
-        </div>
-      </ThemeProvider>
-    </StyledEngineProvider>
+              <Grid item className={classes.sideBar}>
+                <Card>
+                  <SearchBar
+                    fieldOptions={["Action", "Details"]}
+                    field={searchField}
+                    value={searchValue}
+                    setField={setSearchField}
+                    setValue={setSearchValue}
+                  />
+                </Card>
+              </Grid>
+
+              <Grid item className={classes.auditContainer}>
+                <Card style={{ width: "100%" }}>
+                  <Paper
+                    elevation={0}
+                    variant="outlined"
+                    square
+                    className={classes.paperHeader}
+                  >
+                    {audit && (
+                      <IconButton
+                        onClick={() => {
+                          setAudit(null);
+                        }}
+                        style={{
+                          padding: "0px",
+                          marginLeft: "8px",
+                          marginBottom: "4px",
+                        }}
+                        size="large"
+                      >
+                        <ArrowBack />
+                      </IconButton>
+                    )}
+                    <Typography
+                      className={classes.headingTypography}
+                      style={{ marginLeft: "14px" }}
+                    >
+                      Audit Trail
+                    </Typography>
+                  </Paper>
+                  {audit ? (
+                    <AnnotationAuditTable
+                      audit={audit}
+                      searchField={searchField}
+                      searchValue={searchValue}
+                    />
+                  ) : (
+                    <ProjectAuditTable
+                      sessions={props.sessions}
+                      searchField={searchField}
+                      searchValue={searchValue}
+                      setAudit={setAudit}
+                    />
+                  )}
+                </Card>
+              </Grid>
+            </Grid>
+          </Container>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </StylesProvider>
   );
 };
 

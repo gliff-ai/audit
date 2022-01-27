@@ -2,9 +2,9 @@
 import { ChangeEvent, ReactElement } from "react";
 import { theme } from "@gliff-ai/style";
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import { Card, CardContent, Paper, TextField } from "@mui/material";
-import Autocomplete from '@mui/material/Autocomplete';
+import Autocomplete from "@mui/material/Autocomplete";
 
 const useStyles = makeStyles({
   cardContent: {
@@ -51,7 +51,6 @@ const CustomPaper = (props: unknown) => (
 
 export function SearchBar({
   fieldOptions,
-  field,
   value,
   setField,
   setValue,
@@ -94,6 +93,7 @@ export function SearchBar({
             value={value}
             style={{ marginTop: "8px" }}
             placeholder="Value"
+            variant="standard"
           />
         </div>
       </CardContent>
