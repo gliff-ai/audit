@@ -29,10 +29,6 @@ declare module "@mui/styles/defaultTheme" {
 }
 
 const useStyles = makeStyles(() => ({
-  input1: {
-    paddingLeft: "10px",
-    width: "90%",
-  },
   appBar: {
     backgroundColor: theme.palette.secondary.light,
     height: "90px",
@@ -61,10 +57,6 @@ const useStyles = makeStyles(() => ({
     display: "inline",
     fontSize: "21px",
     marginRight: "125px",
-  },
-  tableText: {
-    fontSize: "16px",
-    paddingLeft: "20px",
   },
 }));
 

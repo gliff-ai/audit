@@ -8,7 +8,6 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 const useStyles = makeStyles({
   cardContent: {
-    // backgroundColor: "#EEEEEE",
     borderRadius: "9px",
     marginLeft: "15px",
     marginRight: "15px",
@@ -19,9 +18,6 @@ const useStyles = makeStyles({
     paddingLeft: "10px",
     paddingTop: "10px",
     display: "inline-block",
-  },
-  inputField: {
-    fontSize: "11px",
   },
 });
 

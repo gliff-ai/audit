@@ -8,22 +8,11 @@ import {
   TableBody,
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import { theme } from "@gliff-ai/style";
 import { AuditAction } from "@gliff-ai/annotate";
 
 import { AnnotationSession } from "@/index";
 
 const useStyles = makeStyles(() => ({
-  paperHeader: {
-    padding: "10px",
-    backgroundColor: theme.palette.primary.main,
-  },
-  headingTypography: {
-    color: "#000000",
-    display: "inline",
-    fontSize: "21px",
-    marginRight: "125px",
-  },
   tableText: {
     fontSize: "16px",
     paddingLeft: "20px",
