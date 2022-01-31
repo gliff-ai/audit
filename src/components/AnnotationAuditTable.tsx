@@ -13,21 +13,11 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  makeStyles,
-} from "@material-ui/core";
-import { ExpandMore } from "@material-ui/icons";
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import { ExpandMore } from "@mui/icons-material";
 
 const useStyles = makeStyles(() => ({
-  paperHeader: {
-    padding: "10px",
-    backgroundColor: theme.palette.primary.main,
-  },
-  headingTypography: {
-    color: "#000000",
-    display: "inline",
-    fontSize: "21px",
-    marginRight: "125px",
-  },
   tableText: {
     fontSize: "16px",
     paddingLeft: "20px",
