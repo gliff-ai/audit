@@ -1,4 +1,3 @@
-
 import { defineConfig } from "vite";
 const path = require("path");
 import { ViteAliases } from "vite-aliases";
@@ -19,9 +18,8 @@ export default defineConfig({
         "react",
         "react-dom",
         "react-router-dom",
-        "@material-ui/core",
-        "@material-ui/icons",
-        "@material-ui/lab",
+        "@mui/material",
+        "@mui/icons-material",
         "@gliff-ai/style",
       ],
       output: {

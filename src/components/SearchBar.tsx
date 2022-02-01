@@ -2,26 +2,22 @@
 import { ChangeEvent, ReactElement } from "react";
 import { theme } from "@gliff-ai/style";
 
-import { makeStyles } from "@material-ui/core/styles";
-import { Card, CardContent, Paper, TextField } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import makeStyles from "@mui/styles/makeStyles";
+import { Card, CardContent, Paper, TextField } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const useStyles = makeStyles({
   cardContent: {
-    // backgroundColor: "#EEEEEE",
     borderRadius: "9px",
     marginLeft: "15px",
     marginRight: "15px",
-    height: "110px",
+    height: "120px",
     padding: "inherit",
   },
   input2: {
     paddingLeft: "10px",
     paddingTop: "10px",
     display: "inline-block",
-  },
-  inputField: {
-    fontSize: "11px",
   },
 });
 
@@ -51,7 +47,6 @@ const CustomPaper = (props: unknown) => (
 
 export function SearchBar({
   fieldOptions,
-  field,
   value,
   setField,
   setValue,
@@ -75,12 +70,7 @@ export function SearchBar({
           options={fieldOptions}
           renderInput={(params: unknown) => (
             /* eslint-disable react/jsx-props-no-spreading */
-            <TextField
-              {...params}
-              label="Search Category"
-              type="search"
-              variant="outlined"
-            />
+            <TextField {...params} label="Search Category" variant="outlined" />
             /* eslint-enable react/jsx-props-no-spreading */
           )}
           PaperComponent={CustomPaper}
@@ -94,6 +84,7 @@ export function SearchBar({
             value={value}
             style={{ marginTop: "8px" }}
             placeholder="Value"
+            variant="standard"
           />
         </div>
       </CardContent>
