@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import type { AuditAction } from "@gliff-ai/annotate";
-import { theme, generateClassName } from "@gliff-ai/style";
+import { theme, generateClassName, icons, IconButton } from "@gliff-ai/style";
 import {
   AppBar,
   Toolbar,
@@ -11,13 +11,11 @@ import {
   Card,
   Paper,
   Typography,
-  IconButton,
   CssBaseline,
   Container,
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import { StylesProvider } from "@mui/styles";
-import { ArrowBack } from "@mui/icons-material";
 import { imgSrc } from "@/components/helpers";
 import { SearchBar } from "@/components/SearchBar";
 import { AnnotationAuditTable } from "@/components/AnnotationAuditTable";
@@ -131,18 +129,11 @@ const UserInterface = (props: Props): ReactElement => {
                   >
                     {audit && (
                       <IconButton
-                        onClick={() => {
-                          setAudit(null);
-                        }}
-                        style={{
-                          padding: "0px",
-                          marginLeft: "8px",
-                          marginBottom: "4px",
-                        }}
+                        tooltip={{ name: "Back" }}
+                        icon={icons.arrowLeft}
+                        onClick={() => setAudit(null)}
                         size="large"
-                      >
-                        <ArrowBack />
-                      </IconButton>
+                      />
                     )}
                     <Typography
                       className={classes.headingTypography}
