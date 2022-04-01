@@ -58,20 +58,27 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+export interface ImageData {
+  imageName: string;
+  imageUid: string;
+}
+
 export interface AnnotationSession {
   timestamp: number;
   username: string;
   imagename: string;
   audit: AuditAction[];
+  imageUid: string;
 }
 
 interface Props {
   showAppBar: boolean;
   sessions: AnnotationSession[];
+  setProductsNavbarImageData: (imageName: ImageData) => void;
 }
 
 const UserInterface = (props: Props): ReactElement => {
-  const { showAppBar } = props;
+  const { showAppBar, setProductsNavbarImageData } = props;
   const classes = useStyles();
 
   const [searchField, setSearchField] = useState<string>(""); // search field
@@ -131,7 +138,13 @@ const UserInterface = (props: Props): ReactElement => {
                       <IconButton
                         tooltip={{ name: "Back" }}
                         icon={icons.arrowLeft}
-                        onClick={() => setAudit(null)}
+                        onClick={() => {
+                          setAudit(null);
+                          setProductsNavbarImageData({
+                            imageName: "",
+                            imageUid: "",
+                          });
+                        }}
                         size="large"
                       />
                     )}
@@ -154,6 +167,7 @@ const UserInterface = (props: Props): ReactElement => {
                       searchField={searchField}
                       searchValue={searchValue}
                       setAudit={setAudit}
+                      setProductsNavbarImageData={setProductsNavbarImageData}
                     />
                   )}
                 </Card>

@@ -10,7 +10,7 @@ import {
 import makeStyles from "@mui/styles/makeStyles";
 import { AuditAction } from "@gliff-ai/annotate";
 
-import { AnnotationSession } from "@/index";
+import { AnnotationSession, ImageData } from "@/index";
 
 const useStyles = makeStyles(() => ({
   tableText: {
@@ -24,6 +24,7 @@ interface Props {
   searchField: string;
   searchValue: string;
   setAudit: (audit: AuditAction[]) => void;
+  setProductsNavbarImageData: (imageName: ImageData) => void;
 }
 
 export const ProjectAuditTable = (props: Props): ReactElement => {
@@ -55,6 +56,10 @@ export const ProjectAuditTable = (props: Props): ReactElement => {
                 key={`${session.timestamp}`}
                 onClick={() => {
                   props.setAudit(session.audit);
+                  props.setProductsNavbarImageData({
+                    imageName: session?.imagename,
+                    imageUid: session?.imageUid,
+                  });
                 }}
                 style={{ cursor: "pointer" }}
               >
