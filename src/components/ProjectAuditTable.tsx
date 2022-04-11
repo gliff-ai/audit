@@ -24,7 +24,7 @@ interface Props {
   searchField: string;
   searchValue: string;
   setAudit: (audit: AuditAction[]) => void;
-  setProductsNavbarImageData: (imageName: ImageData) => void;
+  setProductsNavbarImageData: (imageData: ImageData) => void;
 }
 
 export const ProjectAuditTable = (props: Props): ReactElement => {
