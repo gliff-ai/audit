@@ -59,7 +59,7 @@ jobs:
         with:
           node-version: 16
       - name: setup dependencies
-        run: npm i --omit=peer
+        run: npm ci
       - name: build
         run: npm run build
       - name: publish
