@@ -3,7 +3,14 @@ import { ChangeEvent, ReactElement } from "react";
 import { theme } from "@gliff-ai/style";
 
 import makeStyles from "@mui/styles/makeStyles";
-import { Card, CardContent, Paper, TextField } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Paper,
+  PaperProps,
+  TextField,
+  TextFieldProps,
+} from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const useStyles = makeStyles({
@@ -35,14 +42,12 @@ export type MetadataLabel = {
 };
 
 // To be able to style the dropdown list
-const CustomPaper = (props: unknown) => (
-  /* eslint-disable react/jsx-props-no-spreading */
+const CustomPaper = (props: PaperProps) => (
   <Paper
     elevation={8}
     {...props}
     style={{ backgroundColor: theme.palette.primary.light }}
   />
-  /* eslint-enable react/jsx-props-no-spreading */
 );
 
 export function SearchBar({
@@ -68,10 +73,8 @@ export function SearchBar({
             setField(newInputKey);
           }}
           options={fieldOptions}
-          renderInput={(params: unknown) => (
-            /* eslint-disable react/jsx-props-no-spreading */
+          renderInput={(params: TextFieldProps) => (
             <TextField {...params} label="Search Category" variant="outlined" />
-            /* eslint-enable react/jsx-props-no-spreading */
           )}
           PaperComponent={CustomPaper}
           placeholder="Search Category"
