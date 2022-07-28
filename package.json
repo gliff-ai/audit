@@ -25,9 +25,9 @@
   "devDependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@gliff-ai/annotate": "^4.16.0",
+    "@gliff-ai/annotate": "^6.0.0",
     "@gliff-ai/eslint-config": "^0.2.4",
-    "@gliff-ai/style": "^14.7.0",
+    "@gliff-ai/style": "^16.2.1",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
     "@mui/styles": "^5.9.0",
@@ -51,8 +51,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@gliff-ai/annotate": "^4.13.0",
-    "@gliff-ai/style": "^14.0.0",
+    "@gliff-ai/annotate": "^6.0.0",
+    "@gliff-ai/style": "^16.2.1",
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
     "@mui/styles": "^5.8.0",
