@@ -102,6 +102,23 @@ const UserInterface = (props: Props): ReactElement => {
     </AppBar>
   );
 
+  // annotation sessions contain all the actions for a given image/user; actual sessions
+  // are delimited by sessionStart and sessionEnd, so split on those here:
+  const actualSessions = props.sessions.map((session) => {
+    const splitSessions: AnnotationSession[] = [];
+    for (const action of session.audit) {
+      if (action.method === "sessionStart") {
+        const newSession = session;
+        newSession.timestamp = action.timestamp;
+        newSession.audit = [action];
+        splitSessions.push(newSession);
+      } else {
+        splitSessions[splitSessions.length - 1].audit.push(action)
+      }
+    }
+    return splitSessions;
+  }).flat();
+
   return (
     <StylesProvider generateClassName={generateClassName("audit")}>
       <StyledEngineProvider injectFirst>
