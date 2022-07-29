@@ -71,9 +71,15 @@ export interface AnnotationSession {
   imageUid: string;
 }
 
+export interface ProjectAuditAction {
+  action: {type: string, audit?: AuditAction[]} & Record<string, string>;
+  username: string;
+  timestamp: string;
+}
+
 interface Props {
   showAppBar: boolean;
-  sessions: AnnotationSession[];
+  actions: ProjectAuditAction[];
   setProductsNavbarImageData: (imageName: ImageData) => void;
 }
 
@@ -102,22 +108,6 @@ const UserInterface = (props: Props): ReactElement => {
     </AppBar>
   );
 
-  // annotation sessions contain all the actions for a given image/user; actual sessions
-  // are delimited by sessionStart and sessionEnd, so split on those here:
-  const actualSessions = props.sessions.map((session) => {
-    const splitSessions: AnnotationSession[] = [];
-    for (const action of session.audit) {
-      if (action.method === "sessionStart") {
-        const newSession = session;
-        newSession.timestamp = action.timestamp;
-        newSession.audit = [action];
-        splitSessions.push(newSession);
-      } else {
-        splitSessions[splitSessions.length - 1].audit.push(action)
-      }
-    }
-    return splitSessions;
-  }).flat();
 
   return (
     <StylesProvider generateClassName={generateClassName("audit")}>
@@ -180,7 +170,7 @@ const UserInterface = (props: Props): ReactElement => {
                     />
                   ) : (
                     <ProjectAuditTable
-                      sessions={props.sessions}
+                      actions={props.actions}
                       searchField={searchField}
                       searchValue={searchValue}
                       setAudit={setAudit}
