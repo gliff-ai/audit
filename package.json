@@ -23,18 +23,18 @@
   },
   "license": "AGPL-3.0-only",
   "devDependencies": {
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@gliff-ai/annotate": "^6.1.0",
     "@gliff-ai/eslint-config": "^0.2.4",
     "@gliff-ai/style": "^16.3.1",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.9.2",
-    "@mui/styles": "^5.9.2",
-    "@mui/x-data-grid": "^5.15.0",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.13",
+    "@mui/styles": "^5.10.10",
+    "@mui/x-data-grid": "^5.17.11",
     "@types/jest": "^27.5.2",
-    "@types/react": "^17.0.48",
-    "@types/react-dom": "^17.0.17",
+    "@types/react": "^17.0.52",
+    "@types/react-dom": "^17.0.18",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
@@ -42,10 +42,10 @@
     "prettier": "2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "tsc-alias": "^1.7.0",
-    "typescript": "^4.7.4",
-    "vite": "^2.9.14",
-    "vite-aliases": "^0.9.2",
+    "tsc-alias": "^1.7.1",
+    "typescript": "^4.8.4",
+    "vite": "^2.9.15",
+    "vite-aliases": "^0.9.7",
     "vite-plugin-checker": "^0.3.4"
   },
   "peerDependencies": {
@@ -61,6 +61,6 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "csstype": "^3.1.0"
+    "csstype": "^3.1.1"
   }
 }
