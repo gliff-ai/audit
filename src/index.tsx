@@ -71,9 +71,15 @@ export interface AnnotationSession {
   imageUid: string;
 }
 
+export interface ProjectAuditAction {
+  action: {type: string, audit?: AuditAction[]} & Record<string, string>;
+  username: string;
+  timestamp: string;
+}
+
 interface Props {
   showAppBar: boolean;
-  sessions: AnnotationSession[];
+  actions: ProjectAuditAction[];
   setProductsNavbarImageData: (imageName: ImageData) => void;
 }
 
@@ -101,6 +107,7 @@ const UserInterface = (props: Props): ReactElement => {
       </Toolbar>
     </AppBar>
   );
+
 
   return (
     <StylesProvider generateClassName={generateClassName("audit")}>
@@ -163,7 +170,7 @@ const UserInterface = (props: Props): ReactElement => {
                     />
                   ) : (
                     <ProjectAuditTable
-                      sessions={props.sessions}
+                      actions={props.actions}
                       searchField={searchField}
                       searchValue={searchValue}
                       setAudit={setAudit}
